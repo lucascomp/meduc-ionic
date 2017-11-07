@@ -1,4 +1,4 @@
-page-home {
+page-perfil-criar {
     .toolbar-background, .footer, .button {
         background: linear-gradient(to right, #0071ad, #199fb8);
     }
@@ -8,6 +8,27 @@ page-home {
     .toolbar-title-md {
         text-align: center;
         font-size: 1.7rem;
+    }
+    .title {
+        text-transform: uppercase;
+    }
+    .title-md {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .bar-button-default {
+        color: black;
+    }
+    .back-button {
+        z-index: 1;
+    }
+    .list-ios {
+        .item-block:first-child {
+            border-top: 0;
+        }
     }
     .button {
         margin-top: 6vh;
