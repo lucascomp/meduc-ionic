@@ -11,6 +11,7 @@ import { PerfilCarregarPage } from '../pages/perfil-carregar/perfil-carregar';
 import { PerfilCriarPage } from '../pages/perfil-criar/perfil.criar';
 
 import { QuestionService } from '../providers/question/question.service';
+import { ProfileService } from '../providers/profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { QuestionService } from '../providers/question/question.service';
     StatusBar,
     SplashScreen,
     QuestionService,
+    ProfileService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

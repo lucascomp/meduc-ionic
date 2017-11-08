@@ -39,7 +39,7 @@ export class ProfileService {
         });
     }
 
-    excluirPerfil(id: number): Promise<void> {
+    excluirPerfil(id: number): Promise<{}> {
         return new Promise((resolve) => {
             this.recuperarPerfis()
                 .then(profiles => {
