@@ -161,6 +161,11 @@ export const QUESTIONS: Question[] = [
         new Option('Coloque a b) alternativa aqui', false),
         new Option('Coloque a c) alternativa aqui', false)
     ]),
+    new Question(33, 3, 'Coloque a pergunta aqui', [
+        new Option('Coloque a a) alternativa aqui', true),
+        new Option('Coloque a b) alternativa aqui', false),
+        new Option('Coloque a c) alternativa aqui', false)
+    ]),
     new Question(34, 3, 'Coloque a pergunta aqui', [
         new Option('Coloque a a) alternativa aqui', true),
         new Option('Coloque a b) alternativa aqui', false),

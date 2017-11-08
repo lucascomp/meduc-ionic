@@ -7,26 +7,26 @@
 </ion-header>
 
 <ion-content padding>
-    <form>
+    <form name="perfil">
         <ion-list>
             <ion-item>
                 <ion-label floating>Nome</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input required type="text" name="nome" [(ngModel)]="nome"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>E-mail</ion-label>
-                <ion-input type="email"></ion-input>
+                <ion-input required type="email" name="email" [(ngModel)]="email"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Idade</ion-label>
-                <ion-input type="number"></ion-input>
+                <ion-input required type="number" min="0" max="150" name="idade" [(ngModel)]="idade"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label floating>Instituição de ensino</ion-label>
-                <ion-input type="text"></ion-input>
+                <ion-input required type="text" name="instituicaoDeEnsino" [(ngModel)]="instituicaoDeEnsino"></ion-input>
             </ion-item>
         </ion-list>
-        <button ion-button round block type="submit">Criar</button>
+        <button ion-button round block type="submit" (tap)="criarPerfil()">Criar</button>
     </form>
 </ion-content>
 
