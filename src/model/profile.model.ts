@@ -1,16 +1,13 @@
 export class Profile {
     id: number;
+    nivel: number;
     private _nome: string;
     private _email: string;
     private _idade: number;
     private _instituicaoDeEnsino: string;
 
-    constructor(id: number, nome: string, email: string, idade: number, instituicaoDeEnsino: string) {
-        this.id = id;
-        this._nome = nome;
-        this._email = email;
-        this._idade = idade;
-        this._instituicaoDeEnsino = instituicaoDeEnsino;
+    constructor(profile) {
+        Object.assign(this, profile);
     }
 
     get nome() {

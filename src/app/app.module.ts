@@ -9,6 +9,9 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PerfilCarregarPage } from '../pages/perfil-carregar/perfil-carregar';
 import { PerfilCriarPage } from '../pages/perfil-criar/perfil.criar';
+import { PerfilMenuPage } from '../pages/perfil-menu/perfil-menu';
+
+import { ProfileComponent } from '../components/profile/profile.component';
 
 import { QuestionService } from '../providers/question/question.service';
 import { ProfileService } from '../providers/profile/profile.service';
@@ -18,7 +21,9 @@ import { ProfileService } from '../providers/profile/profile.service';
     MyApp,
     HomePage,
     PerfilCarregarPage,
-    PerfilCriarPage
+    PerfilCriarPage,
+    PerfilMenuPage,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { ProfileService } from '../providers/profile/profile.service';
     MyApp,
     HomePage,
     PerfilCarregarPage,
-    PerfilCriarPage
+    PerfilCriarPage,
+    PerfilMenuPage
   ],
   providers: [
     StatusBar,

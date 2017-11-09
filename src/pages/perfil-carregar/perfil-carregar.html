@@ -7,7 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-    
+    <profile *ngFor="let profile of profiles" [profile]="profile" (selected)="newId($event)" [class.selected]="profile.id == idSelected"></profile>
+    <div *ngIf="profiles.length > 0">
+        <button ion-button outline round id="excluir-perfil" (tap)="excluirPerfil()">
+            <ion-icon name="close-circle"></ion-icon>
+            Excluir
+        </button>
+        <button ion-button outline round id="carregar-perfil" (tap)="carregarPerfil()">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            Carregar
+        </button>
+    </div>
 </ion-content>
 
 <ion-footer>
