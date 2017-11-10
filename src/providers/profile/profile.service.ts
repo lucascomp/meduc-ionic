@@ -20,7 +20,7 @@ export class ProfileService {
                 .then(profiles => {
                     profiles = profiles || [];
                     profile.id = profiles.length + 1;
-                    profile.nivel = 1;
+                    profile.nivel = 0;
                     let newProfile = new Profile(profile);
                     profiles.push(newProfile);
                     this.storage.ready()
@@ -44,6 +44,7 @@ export class ProfileService {
                 .then(() => {
                     this.storage.get(this.profileKey)
                         .then(storedProfiles => {
+                            storedProfiles = storedProfiles || [];
                             let profiles: Profile[] = [];
                             storedProfiles.forEach(storedProfile => {
                                 profiles.push(new Profile(storedProfile));

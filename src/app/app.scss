@@ -1,4 +1,4 @@
-.toolbar-background, .footer, .button {
+.toolbar-background, .footer, .large-button {
     background: linear-gradient(to right, #0071ad, #199fb8);
 }
 .toolbar-title {
@@ -24,7 +24,7 @@
 .back-button {
     z-index: 1;
 }
-.button {
+.large-button {
     margin-top: 6vh;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.28), 0 6px 2px -4px rgba(0, 0, 0, 0.4), 0 2px 10px 0 rgba(0, 0, 0, 0.24);
 }

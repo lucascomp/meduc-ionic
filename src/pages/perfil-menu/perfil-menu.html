@@ -7,14 +7,18 @@
 </ion-header>
 
 <ion-content padding>
-    Página de Menu - Em construção<br><br><br><br>
-    id: {{profile.id}}<br>
-    nome: {{profile.nome}} - nivel: {{profile.nivel}}<br>
-    email: {{profile.email}}<br>
-    idade: {{profile.idade}}<br>
-    instituicaoDeEnsino: {{profile.instituicaoDeEnsino}}<br>
-    <br><br><br><br><br>
-    Para voltar a Home, pressione o <strong>botão de voltar</strong> do dispositivo ou clique <button (tap)="tempHome()">aqui</button>
+    <div id="niveis">
+        <h3>Níveis</h3>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 1" [class.done]="profile.nivel > 1" [class.highlighted]="profile.nivel == 1">1</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 2" [class.done]="profile.nivel > 2" [class.highlighted]="profile.nivel == 2">2</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 3" [class.done]="profile.nivel > 3" [class.highlighted]="profile.nivel == 3">3</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 4" [class.done]="profile.nivel > 4" [class.highlighted]="profile.nivel == 4">4</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 5" [class.done]="profile.nivel > 5" [class.highlighted]="profile.nivel == 5">5</button>
+    </div>
+    <div id="iniciar">
+        <button ion-button round block class="large-button" [disabled]="profile.nivel != 0" (tap)="iniciar()">Nivelamento</button>
+        <button ion-button block class="large-button" [disabled]="profile.nivel == 0" (tap)="iniciar()">Iniciar</button>
+    </div>
 </ion-content>
 
 <ion-footer>

@@ -1,6 +1,6 @@
 page-perfil-carregar {
     .button {
-        background: none;
+        margin-top: 6vh;
         ion-icon {
             padding-right: 10px;
         }
@@ -16,7 +16,8 @@ page-perfil-carregar {
     }
     .selected {
         ion-card {
-            border: 3px solid #199fb8;
+            border: 2px solid #199fb8;
+            box-shadow: 7px 7px 5px #888888;
         }
     }
 }

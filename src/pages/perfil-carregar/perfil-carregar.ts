@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
 import { PerfilMenuPage } from '../perfil-menu/perfil-menu';
 
 import { ProfileService } from '../../providers/profile/profile.service';
@@ -115,9 +114,7 @@ export class PerfilCarregarPage {
                 if(profile.id == this.idSelected) return true;
                 else return false;
               });
-              this.navCtrl.setRoot(PerfilMenuPage, {
-                profile: profile
-              });
+              this.navCtrl.setPages([{ page: HomePage, params: { profile: profile } }, { page: PerfilMenuPage, params: { profile: profile } }]);
             }
           }
         ]

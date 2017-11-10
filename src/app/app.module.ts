@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { PerfilCarregarPage } from '../pages/perfil-carregar/perfil-carregar';
 import { PerfilCriarPage } from '../pages/perfil-criar/perfil.criar';
 import { PerfilMenuPage } from '../pages/perfil-menu/perfil-menu';
+import { PerfilNivelPage } from '../pages/perfil-nivel/perfil-nivel';
 
 import { ProfileComponent } from '../components/profile/profile.component';
 
@@ -23,6 +24,7 @@ import { ProfileService } from '../providers/profile/profile.service';
     PerfilCarregarPage,
     PerfilCriarPage,
     PerfilMenuPage,
+    PerfilNivelPage,
     ProfileComponent
   ],
   imports: [
@@ -36,7 +38,8 @@ import { ProfileService } from '../providers/profile/profile.service';
     HomePage,
     PerfilCarregarPage,
     PerfilCriarPage,
-    PerfilMenuPage
+    PerfilMenuPage,
+    PerfilNivelPage
   ],
   providers: [
     StatusBar,
