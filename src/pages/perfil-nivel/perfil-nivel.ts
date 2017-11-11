@@ -100,7 +100,7 @@ export class PerfilNivelPage {
                 ]);
             }
             else {
-                this.exibirAlerta('=(', 'Você não finalizou o nível. Tente novamente!', [
+                this.exibirAlerta('=(', 'Você não finalizou o nível. Um reforço foi preparado pra você!', [
                     {
                         text: 'Ok',
                         handler: () => {
