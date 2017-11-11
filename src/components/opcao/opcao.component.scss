@@ -1,0 +1,27 @@
+opcao {
+    ion-card {
+        padding: 2vh 2vw;
+        margin-left: 0 !important;
+        position: relative;
+        cursor: pointer;
+        .letra {
+            float: left;
+            width: 10%;
+            position: absolute;
+            height: calc(100% - 10px - 2vh);
+            p {
+                line-height: 0;
+                margin-bottom: 0;
+                font-weight: bold;
+                color: black;
+                position: absolute;
+                top:50%;
+            }
+        }
+        .texto {
+            float: right;
+            width: 90%;
+            line-height: 1.3;
+        }
+    }
+}

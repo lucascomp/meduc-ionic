@@ -16,6 +16,7 @@ export class ProfileService {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
             });
+            loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
                     profiles = profiles || [];
@@ -40,6 +41,7 @@ export class ProfileService {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
             });
+            loading.present();
             this.storage.ready()
                 .then(() => {
                     this.storage.get(this.profileKey)
@@ -56,11 +58,12 @@ export class ProfileService {
         });
     }
 
-    excluirPerfil(id: number): Promise<{}> {
+    excluirPerfil(id: number): Promise<Profile[]> {
         return new Promise(resolve => {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
             });
+            loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
                     profiles = profiles.filter(profile => {
@@ -75,57 +78,92 @@ export class ProfileService {
                             this.storage.set(this.profileKey, profiles)
                                 .then(() => {
                                     loading.dismiss();
-                                    resolve();
+                                    resolve(profiles);
                                 });
                         });
                 });
         });
     }
 
-    subirNivel(id: number): Promise<{}> {
+    subirNivel(id: number): Promise<Profile> {
         return new Promise(resolve => {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
             });
+            loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
+                    let newProfile;
                     profiles.forEach(profile => {
-                        if(profile.id == id)
+                        if(profile.id == id) {
                             profile.nivel++;
-                        return true;
+                            profile.respostas = [];
+                            newProfile = profile;
+                        }
                     });
                     this.storage.ready()
                         .then(() => {
                             this.storage.set(this.profileKey, profiles)
                                 .then(() => {
                                     loading.dismiss();
-                                    resolve();
+                                    resolve(newProfile);
                                 });
                         });
                 });
         });
     }
 
-    descerNivel(id: number): Promise<{}> {
+    descerNivel(id: number): Promise<Profile> {
         return new Promise(resolve => {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
             });
+            loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
+                    let newProfile;
                     profiles.forEach(profile => {
-                        if(profile.id == id)
+                        if(profile.id == id) {
                             profile.nivel--;
-                        return true;
+                            profile.respostas = [];
+                            newProfile = profile;
+                        }
                     });
                     this.storage.ready()
                         .then(() => {
                             this.storage.set(this.profileKey, profiles)
                                 .then(() => {
                                     loading.dismiss();
-                                    resolve();
+                                    resolve(newProfile);
                                 });
                         });
+                });
+        });
+    }
+
+    salvarResposta(id: number, respostaCerta: boolean): Promise<Profile> {
+        return new Promise(resolve => {
+            let loading = this.loadingCtrl.create({
+                content: 'Carregando...'
+            });
+            loading.present();
+            this.recuperarPerfis()
+                .then(profiles => {
+                    let newProfile;
+                    profiles.forEach(profile => {
+                        if(profile.id == id) {
+                            profile.respostas.push(respostaCerta);
+                            newProfile = profile;
+                        }
+                    });
+                    this.storage.ready()
+                    .then(() => {
+                        this.storage.set(this.profileKey, profiles)
+                            .then(() => {
+                                loading.dismiss();
+                                resolve(newProfile);
+                            });
+                    });
                 });
         });
     }

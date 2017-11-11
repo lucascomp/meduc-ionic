@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+                {{(profile.nivel > 0 ? ('Nível ' + profile.nivel) : 'Nivelamento') + ' - Questão 0' + (profile.perguntasRespondidas + 1)}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-icon ios="ios-alarm-outline" md="ios-alarm-outline"></ion-icon>
+    <div class="contador" [class.acabou]="contador == 0">
+        <strong>{{contador}}</strong>
+    </div>
+    <div *ngIf="questao" class="questao">
+        <pergunta [pergunta]="questao"></pergunta>
+        <opcao *ngFor="let opcao of questao.options" [opcao]="opcao" (selected)="newOption($event)" [class.selected]="opcao.id == opcaoSelecionada"></opcao>
+    </div>
+    <button class="large-button" [disabled]="!opcaoSelecionada || contador == 0" ion-button round block (tap)="confirmar()">Confirmar</button>
+</ion-content>

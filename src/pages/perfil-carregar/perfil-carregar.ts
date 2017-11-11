@@ -65,11 +65,8 @@ export class PerfilCarregarPage {
             text: 'Sim',
             handler: () => {
               this.profileService.excluirPerfil(this.idSelected)
-                .then(() => {
-                  this.profiles = this.profiles.filter(profile => {
-                    if(profile.id == this.idSelected) return false;
-                    else return true;
-                  });
+                .then(profiles => {
+                  this.profiles = profiles;
                   const toast = this.toastCtrl.create({
                     message: 'O perfil foi excluído com sucesso!',
                     duration: 2000,

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
 import { PerfilNivelPage } from '../perfil-nivel/perfil-nivel';
 
 import { Profile } from '../../model/profile.model';

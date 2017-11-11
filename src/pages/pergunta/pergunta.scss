@@ -1,0 +1,36 @@
+page-pergunta {
+    .title-ios {
+        padding: 0 15vw;
+    }
+    ion-icon {
+        position: absolute;
+        font-size: 2.2em;
+        top: 3.5vh;
+        right: 20vw;
+    }
+    .contador {
+        float: right;
+        border: 2px solid #199fb8;
+        border-radius: 50px;
+        width: 12vw;
+        height: 12vw;
+        text-align: center;
+        padding: 2.4vw;
+        font-size: 1.5rem;
+    }
+    .acabou {
+        border: 2px solid red;
+    }
+    .questao {
+        margin-top: 14vw;
+    }
+    pergunta, opcao {
+        display: block;
+    }
+    pergunta {
+        margin-bottom: 4vh;
+    }
+    opcao {
+        margin: 2vh 0;
+    }
+}

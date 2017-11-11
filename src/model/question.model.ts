@@ -34,12 +34,18 @@ export class Question {
 }
 
 export class Option {
+    private _id: number;
     private _answer: string;
     private _value: boolean;
 
-    constructor(answer: string, value: boolean) {
+    constructor(id: number, answer: string, value: boolean) {
+        this._id = id;
         this._answer = answer;
         this._value = value;
+    }
+
+    get id() {
+        return this._id;
     }
 
     get answer() {
