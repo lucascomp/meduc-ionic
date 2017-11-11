@@ -10,9 +10,7 @@ import { PerfilCriarPage } from '../perfil-criar/perfil.criar';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
-  }
+  constructor(private navCtrl: NavController) {}
 
   criarNovoPerfil() {
     this.navCtrl.push(PerfilCriarPage);

@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Menu
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div id="niveis">
+        <h3>Níveis</h3>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 1" [class.done]="profile.nivel > 1" [class.highlighted]="profile.nivel == 1">1</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 2" [class.done]="profile.nivel > 2" [class.highlighted]="profile.nivel == 2">2</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 3" [class.done]="profile.nivel > 3" [class.highlighted]="profile.nivel == 3">3</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 4" [class.done]="profile.nivel > 4" [class.highlighted]="profile.nivel == 4">4</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 5" [class.done]="profile.nivel > 5" [class.highlighted]="profile.nivel == 5">5</button>
+    </div>
+    <div id="iniciar">
+        <button ion-button round block class="large-button" [disabled]="profile.nivel != 0" (tap)="iniciar()">Nivelamento</button>
+        <button ion-button block class="large-button" [disabled]="profile.nivel == 0" (tap)="iniciar()">Iniciar</button>
+    </div>
+</ion-content>

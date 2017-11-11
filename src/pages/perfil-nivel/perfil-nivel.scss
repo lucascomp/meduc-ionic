@@ -1,0 +1,23 @@
+page-perfil-nivel {
+    #respostas {
+        margin-top: 4vh;
+        button {
+            width: 17.9%;
+        }
+        .resposta {
+            background-color: #FAFAFA;
+            color: black;
+        }
+        .certa {
+            background-color: green;
+            color: white;
+        }
+        .errada {
+            background-color: red;
+            color: white;
+        }
+    }
+    #iniciar {
+        margin-top: 20vh;
+    }
+}

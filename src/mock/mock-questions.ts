@@ -1,6 +1,7 @@
 import { Question, Option } from '../model/question.model';
 
 export const QUESTIONS: Question[] = [
+
     new Question(1, 1, 'Claudia queixa-se de que há oito meses tem tido diminuição acentuada do desejo sexual, não apresenta pensamentos eróticos, não sente prazer nas relações sexuais, com redução das sensações genitais durante a atividade sexual e nenhuma iniciativa de atividade sexual, o que tem gerado grande sofrimento e transtornos em seu casamento e decepção por ser mulher e apresentar esta dificuldade. Qual é o diagnóstico?', [
         new Option('Transtorno da penetração', false),
         new Option('Disforia de gênero', false),

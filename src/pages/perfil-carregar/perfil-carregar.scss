@@ -1,35 +1,23 @@
 page-perfil-carregar {
-    .toolbar-background, .footer {
-        background: linear-gradient(to right, #0071ad, #199fb8);
+    .button {
+        margin-top: 6vh;
+        ion-icon {
+            padding-right: 10px;
+        }
     }
-    .toolbar-title {
-        color: white;
+    #excluir-perfil {
+        border-color: #b66d6d;
+        color: #e65b5b;
     }
-    .toolbar-title-md {
-        text-align: center;
-        font-size: 1.7rem;
-        color: white;
+    #carregar-perfil {
+        border-color: green;
+        color: green;
+        float: right;
     }
-    .title {
-        text-transform: uppercase;
-    }
-    .title-md {
-        left: 0;
-        top: 0;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-    }
-    .bar-button-default-ios {
-        color: #555;
-    }
-    .back-button {
-        z-index: 1;
-    }
-    .footer-md {
-        min-height: 56px;
-    }
-    .footer-ios {
-        min-height: calc(20px + 44px);
+    .selected {
+        ion-card {
+            border: 2px solid #199fb8;
+            box-shadow: 7px 7px 5px #888888;
+        }
     }
 }

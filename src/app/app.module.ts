@@ -3,33 +3,49 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PerfilCarregarPage } from '../pages/perfil-carregar/perfil-carregar';
 import { PerfilCriarPage } from '../pages/perfil-criar/perfil.criar';
+import { PerfilMenuPage } from '../pages/perfil-menu/perfil-menu';
+import { PerfilNivelPage } from '../pages/perfil-nivel/perfil-nivel';
+
+import { ProfileComponent } from '../components/profile/profile.component';
+
+import { QuestionService } from '../providers/question/question.service';
+import { ProfileService } from '../providers/profile/profile.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     PerfilCarregarPage,
-    PerfilCriarPage
+    PerfilCriarPage,
+    PerfilMenuPage,
+    PerfilNivelPage,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     PerfilCarregarPage,
-    PerfilCriarPage
+    PerfilCriarPage,
+    PerfilMenuPage,
+    PerfilNivelPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    QuestionService,
+    ProfileService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
