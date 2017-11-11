@@ -60,7 +60,7 @@ export class PerfilCriarPage {
               {
                 text: 'Ok',
                 handler: data => {
-                  this.navCtrl.setPages([{ page: HomePage, params: { profile: profile } }, { page: PerfilMenuPage, params: { profile: profile } }]);
+                  this.navCtrl.setPages([{ page: HomePage }, { page: PerfilMenuPage, params: { profile: profile } }]);
                 }
               }
             ]

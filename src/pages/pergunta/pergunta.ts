@@ -71,7 +71,7 @@ export class PerguntaPage {
                 message: respostaCerta ? 'Parabéns, você acertou!' : 'Sinto muito, ' + ( !this.contador ? 'o tempo acabou.' : 'você errou.'),
                 buttons: [
                     {
-                        text: 'Menu',
+                        text: 'Voltar',
                         handler: () => {
                             this.voltarMenu(profile);
                         }
@@ -99,8 +99,7 @@ export class PerguntaPage {
     voltarMenu(profile) {
         this.navCtrl.setPages([
             {
-                page: HomePage,
-                params: { profile: profile }
+                page: HomePage
             },
             {
                 page: PerfilMenuPage,
