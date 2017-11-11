@@ -85,7 +85,7 @@ export class ProfileService {
         });
     }
 
-    subirNivel(id: number): Promise<Profile> {
+    estabelecerNivel(id: number, nivel: number): Promise<Profile> {
         return new Promise(resolve => {
             let loading = this.loadingCtrl.create({
                 content: 'Carregando...'
@@ -96,35 +96,7 @@ export class ProfileService {
                     let newProfile;
                     profiles.forEach(profile => {
                         if(profile.id == id) {
-                            profile.nivel++;
-                            profile.respostas = [];
-                            newProfile = profile;
-                        }
-                    });
-                    this.storage.ready()
-                        .then(() => {
-                            this.storage.set(this.profileKey, profiles)
-                                .then(() => {
-                                    loading.dismiss();
-                                    resolve(newProfile);
-                                });
-                        });
-                });
-        });
-    }
-
-    descerNivel(id: number): Promise<Profile> {
-        return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
-            loading.present();
-            this.recuperarPerfis()
-                .then(profiles => {
-                    let newProfile;
-                    profiles.forEach(profile => {
-                        if(profile.id == id) {
-                            profile.nivel--;
+                            profile.nivel = nivel;
                             profile.respostas = [];
                             newProfile = profile;
                         }

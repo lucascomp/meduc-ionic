@@ -6,10 +6,10 @@ import { PerfilMenuPage } from '../perfil-menu/perfil-menu';
 import { PerfilNivelPage } from '../perfil-nivel/perfil-nivel';
 
 import { ProfileService } from '../../providers/profile/profile.service';
+import { QuestionService } from '../../providers/question/question.service';
 
 import { Profile } from '../../model/profile.model';
 import { Question } from '../../model/question.model';
-import { QUESTIONS } from '../../mock/mock-questions';
 
 @Component({
     selector: 'page-pergunta',
@@ -27,7 +27,8 @@ export class PerguntaPage {
         private navCtrl: NavController,
         private navParams: NavParams,
         private alertCtrl: AlertController,
-        private profileService: ProfileService
+        private profileService: ProfileService,
+        private questionService: QuestionService
     ) {
         this.profile = this.navParams.get('profile');
     }
@@ -38,16 +39,7 @@ export class PerguntaPage {
                 this.exibirResultado(false);
             }
         }, 1000);
-        this.questao = this.selecionarPergunta();
-    }
-
-    selecionarPergunta(): Question {
-        if(this.profile.nivel == 0) {
-            return QUESTIONS[(this.profile.perguntasRespondidas/2) * 12 + (this.profile.perguntasRespondidas % 2 == 0 ? 1 : 0)];
-        }
-        else {
-            return QUESTIONS[(this.profile.nivel - 1) * 12 + (2 + this.profile.perguntasRespondidas)];
-        }
+        this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas);
     }
 
     newOption(id: number): void {

@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Rx';
-import { of } from 'rxjs/observable/of';
-
 import { Question } from '../../model/question.model';
 import { QUESTIONS } from '../../mock/mock-questions';
 
@@ -11,8 +8,13 @@ export class QuestionService {
     
     constructor() {}
 
-    getQuestions(): Observable<Question[]> {
-        return of(QUESTIONS);
+    selecionarPergunta(nivel: number, perguntasRespondidas: number): Question {
+        if(nivel == 0) {
+            return QUESTIONS[(perguntasRespondidas/2) * 12 + (perguntasRespondidas % 2 == 0 ? 1 : 0)];
+        }
+        else {
+            return QUESTIONS[(nivel - 1) * 12 + (2 + perguntasRespondidas)];
+        }
     }
     
 }
