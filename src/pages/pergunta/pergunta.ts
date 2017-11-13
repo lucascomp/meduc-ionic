@@ -83,23 +83,28 @@ export class PerguntaPage {
                     }
                 ]
             });
-            alert.present();
+            setTimeout(() => {
+                alert.present();
+            }, 600);
         });
         clearInterval(this.contagemInterval);
     }
 
     voltarMenu(profile) {
+        let params = {
+            profile: profile
+        }
         this.navCtrl.setPages([
             {
                 page: HomePage
             },
             {
                 page: PerfilMenuPage,
-                params: { profile: profile }
+                params: params
             },
             {
                 page: PerfilNivelPage,
-                params: { profile: profile }
+                params: params
             }
         ]);
     }

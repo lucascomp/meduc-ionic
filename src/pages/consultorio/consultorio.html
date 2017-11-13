@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Consultório - Nível {{nivel()}}
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+    <ion-img *ngIf="nivel() == 1" src="assets/imgs/consultorio1.png" alt="Imagem do consultório nível 1"></ion-img>
+    <ion-img *ngIf="nivel() == 2" src="assets/imgs/consultorio2.png" alt="Imagem do consultório nível 2"></ion-img>
+    <ion-img *ngIf="nivel() == 3" src="assets/imgs/consultorio3.png" alt="Imagem do consultório nível 3"></ion-img>
+    <ion-img *ngIf="nivel() == 4" src="assets/imgs/consultorio4.png" alt="Imagem do consultório nível 4"></ion-img>
+    <ion-img *ngIf="nivel() == 5" src="assets/imgs/consultorio5.png" alt="Imagem do consultório nível 5"></ion-img>
+</ion-content>

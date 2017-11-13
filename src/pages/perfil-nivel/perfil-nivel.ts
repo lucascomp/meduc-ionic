@@ -100,7 +100,7 @@ export class PerfilNivelPage {
                 ]);
             }
             else {
-                this.exibirAlerta('=(', 'Você não finalizou o nível. Um reforço foi preparado pra você!', [
+                this.exibirAlerta('=(', 'Você não finalizou o nível. Será necessário fazer um reforço.', [
                     {
                         text: 'Ok',
                         handler: () => {
@@ -116,6 +116,7 @@ export class PerfilNivelPage {
         this.profileService.estabelecerNivel(this.profile.id, novoNivel)
         .then(newProfile => {
             this.profile = newProfile;
+            this.navParams.data.profile = newProfile;
         })
     }
 

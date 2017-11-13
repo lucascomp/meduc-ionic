@@ -13,9 +13,7 @@ export class ProfileService {
 
     criarPerfil(profile): Promise<Profile> {
         return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
+            let loading = this.loadingCtrl.create({});
             loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
@@ -38,9 +36,7 @@ export class ProfileService {
 
     recuperarPerfis(): Promise<Profile[]> {
         return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
+            let loading = this.loadingCtrl.create({});
             loading.present();
             this.storage.ready()
                 .then(() => {
@@ -60,9 +56,7 @@ export class ProfileService {
 
     excluirPerfil(id: number): Promise<Profile[]> {
         return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
+            let loading = this.loadingCtrl.create({});
             loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
@@ -87,9 +81,7 @@ export class ProfileService {
 
     estabelecerNivel(id: number, nivel: number): Promise<Profile> {
         return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
+            let loading = this.loadingCtrl.create({});
             loading.present();
             this.recuperarPerfis()
                 .then(profiles => {
@@ -115,9 +107,7 @@ export class ProfileService {
 
     salvarResposta(id: number, respostaCerta: boolean): Promise<Profile> {
         return new Promise(resolve => {
-            let loading = this.loadingCtrl.create({
-                content: 'Carregando...'
-            });
+            let loading = this.loadingCtrl.create({});
             loading.present();
             this.recuperarPerfis()
                 .then(profiles => {

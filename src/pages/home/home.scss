@@ -1,1 +1,17 @@
-
+page-home {
+    h1, h6 {
+        color: #0071ad;
+        text-align: center;
+    }
+    h1 {
+        margin: 5vh 0 10vh 0 !important;
+        font-size: 3.5rem;
+    }
+    h6 {
+        margin: 5vh 0 !important;
+        font-size: 1.6rem;
+    }
+    .start {
+        margin-top: 20vh;
+    }
+}

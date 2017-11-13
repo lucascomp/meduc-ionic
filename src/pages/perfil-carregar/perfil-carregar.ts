@@ -111,7 +111,7 @@ export class PerfilCarregarPage {
                 if(profile.id == this.idSelected) return true;
                 else return false;
               });
-              this.navCtrl.setPages([{ page: HomePage, params: { profile: profile } }, { page: PerfilMenuPage, params: { profile: profile } }]);
+              this.navCtrl.setPages([{ page: HomePage }, { page: PerfilMenuPage, params: { profile: profile } }]);
             }
           }
         ]
