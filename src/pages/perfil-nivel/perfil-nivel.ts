@@ -76,9 +76,13 @@ export class PerfilNivelPage {
                 title = '=)';
                 message = `Parabéns, você subiu de nível!`;
             }
-            else {
+            else if(this.profile.reforco < 2) {
                 title = '=(';
                 message = `Você não finalizou o nível. Será necessário fazer um reforço.`;
+            }
+            else {
+                title = '=(';
+                message = `Você foi rebaixado de nível.`;
             }
         }
         this.exibirAlerta(title, message, [

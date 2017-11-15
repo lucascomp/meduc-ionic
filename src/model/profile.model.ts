@@ -3,6 +3,7 @@ export class Profile {
     nivel: number;
     respostas: boolean[] = [];
     opcoesRespondidas: number[] = [];
+    reforco: number;
     private _nome: string;
     private _email: string;
     private _idade: number;
