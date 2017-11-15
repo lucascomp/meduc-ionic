@@ -21,6 +21,7 @@ export class PerguntaPage {
     questao: Question;
     opcaoSelecionada: number;
     respondido: boolean;
+    visualizar: any;
 
     constructor(
         private navCtrl: NavController,
@@ -30,10 +31,18 @@ export class PerguntaPage {
         private questionService: QuestionService
     ) {
         this.profile = this.navParams.get('profile');
+        this.visualizar = this.navParams.get('questao');
     }
 
     ionViewDidEnter(): void {
-        this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas);
+        if(this.visualizar) {
+            this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.visualizar.questao - 1);
+            this.opcaoSelecionada = this.profile.opcoesRespondidas[this.visualizar.questao - 1];
+            this.respondido = true;
+        }
+        else {
+            this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas);
+        }
     }
 
     newOption(id: number): void {
@@ -42,12 +51,18 @@ export class PerguntaPage {
 
     confirmar(): void {
         if(this.respondido) {
-            this.voltarMenu(this.profile);
+            this.avancar();
         }
         else {
             const respostaCerta = this.respostaCerta();
             this.exibirResultado(respostaCerta);
         }
+    }
+
+    avancar(): void {
+        this.navCtrl.setRoot(PerguntaPage, {
+            profile: this.profile
+        });
     }
 
     respostaCerta(): boolean {
@@ -57,19 +72,13 @@ export class PerguntaPage {
         }).value;
     }
 
-    exibirResultado(respostaCerta) {
+    exibirResultado(respostaCerta): void {
         this.salvarResposta(respostaCerta)
         .then(profile => {
             let alert = this.alertCtrl.create({
                 title: respostaCerta ? '=D' : '=(',
                 message: respostaCerta ? 'Parabéns, você acertou!' : 'Sinto muito, você errou.',
                 buttons: [
-                    {
-                        text: 'Voltar',
-                        handler: () => {
-                            this.voltarMenu(profile);
-                        }
-                    },
                     {
                         text: 'Ok',
                         handler: () => {
@@ -85,39 +94,41 @@ export class PerguntaPage {
         });
     }
 
-    voltarMenu(profile) {
-        if(profile.perguntasRespondidas < 10) {
-            this.navCtrl.setRoot(PerguntaPage, {
-                profile: profile
-            });
+    voltarMenu(): void {
+        let params = {
+            profile: this.profile
         }
-        else {
-            let params = {
-                profile: profile
+        this.navCtrl.setPages([
+            {
+                page: HomePage
+            },
+            {
+                page: PerfilMenuPage,
+                params: params
+            },
+            {
+                page: PerfilNivelPage,
+                params: params
             }
-            this.navCtrl.setPages([
-                {
-                    page: HomePage
-                },
-                {
-                    page: PerfilMenuPage,
-                    params: params
-                },
-                {
-                    page: PerfilNivelPage,
-                    params: params
-                }
-            ]);
-        }
+        ]);
     }
 
     salvarResposta(respostaCerta: boolean): Promise<Profile> {
         return new Promise(resolve => {
-            this.profileService.salvarResposta(this.profile.id, respostaCerta)
+            this.profileService.salvarResposta(this.profile.id, respostaCerta, this.opcaoSelecionada)
                 .then(profile => {
                     resolve(profile);
                 });
         });
+    }
+
+    get titulo(): string {
+        if(this.visualizar) {
+            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.visualizar.questao < 10 ? '0' : '') + this.visualizar.questao;
+        }
+        else {
+            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.profile.perguntasRespondidas < 10 ? '0' : '') + (this.profile.perguntasRespondidas + (this.respondido ? 0 : 1));
+        }
     }
 
 }

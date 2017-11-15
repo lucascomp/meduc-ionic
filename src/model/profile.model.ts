@@ -2,6 +2,7 @@ export class Profile {
     id: number;
     nivel: number;
     respostas: boolean[] = [];
+    opcoesRespondidas: number[] = [];
     private _nome: string;
     private _email: string;
     private _idade: number;

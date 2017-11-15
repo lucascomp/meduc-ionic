@@ -90,6 +90,7 @@ export class ProfileService {
                         if(profile.id == id) {
                             profile.nivel = nivel;
                             profile.respostas = [];
+                            profile.opcoesRespondidas = [];
                             newProfile = profile;
                         }
                     });
@@ -105,7 +106,7 @@ export class ProfileService {
         });
     }
 
-    salvarResposta(id: number, respostaCerta: boolean): Promise<Profile> {
+    salvarResposta(id: number, respostaCerta: boolean, idOpcaoRespondida: number): Promise<Profile> {
         return new Promise(resolve => {
             let loading = this.loadingCtrl.create({});
             loading.present();
@@ -115,6 +116,7 @@ export class ProfileService {
                     profiles.forEach(profile => {
                         if(profile.id == id) {
                             profile.respostas.push(respostaCerta);
+                            profile.opcoesRespondidas.push(idOpcaoRespondida);
                             newProfile = profile;
                         }
                     });

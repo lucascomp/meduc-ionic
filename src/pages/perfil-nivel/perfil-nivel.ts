@@ -124,4 +124,14 @@ export class PerfilNivelPage {
             }
         ]);
     }
+
+    verPergunta(question: number): void {
+        this.navCtrl.push(PerguntaPage, {
+            profile: this.profile,
+            questao: {
+                questao: question,
+
+            }
+        });
+    }
 }
