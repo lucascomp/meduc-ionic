@@ -2,14 +2,32 @@ page-perfil-menu {
     .nivel {
         width: 17.9%;
     }
-    .done {
-        background-color: green;
-    }
     .highlighted {
+        color: white;
         box-shadow: 4px 4px 5px #888888;
     }
     #niveis {
         margin-top: 4vh;
+        .background1 {
+            background-size: 50px 35px;
+            background-image: url("../assets/imgs/consultorio1.png");
+        }
+        .background2 {
+            background-size: 50px 35px;
+            background-image: url("../assets/imgs/consultorio2.png");
+        }
+        .background3 {
+            background-size: 50px 35px;
+            background-image: url("../assets/imgs/consultorio3.png");
+        }
+        .background4 {
+            background-size: 50px 35px;
+            background-image: url("../assets/imgs/consultorio4.png");
+        }
+        .background5 {
+            background-size: 50px 35px;
+            background-image: url("../assets/imgs/consultorio5.png");
+        }
     }
     #iniciar {
         margin-top: 20vh;

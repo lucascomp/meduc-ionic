@@ -9,11 +9,11 @@
 <ion-content padding>
     <div id="niveis">
         <h3>Seu consultório:</h3>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 1" [class.highlighted]="profile.nivel == 1" (tap)="consultorio()">1</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 2" [class.highlighted]="profile.nivel == 2" (tap)="consultorio()">2</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 3" [class.highlighted]="profile.nivel == 3" (tap)="consultorio()">3</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 4" [class.highlighted]="profile.nivel == 4" (tap)="consultorio()">4</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 5" [class.highlighted]="profile.nivel == 5" (tap)="consultorio()">5</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 1" [class.highlighted]="profile.nivel == 1" [class.background1]="profile.nivel == 1" (tap)="consultorio()">1</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 2" [class.highlighted]="profile.nivel == 2" [class.background2]="profile.nivel == 2" (tap)="consultorio()">2</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 3" [class.highlighted]="profile.nivel == 3" [class.background3]="profile.nivel == 3" (tap)="consultorio()">3</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 4" [class.highlighted]="profile.nivel == 4" [class.background4]="profile.nivel == 4" (tap)="consultorio()">4</button>
+        <button class="nivel" ion-button round [disabled]="profile.nivel != 5" [class.highlighted]="profile.nivel == 5" [class.background5]="profile.nivel == 5" (tap)="consultorio()">5</button>
     </div>
     <div id="iniciar">
         <button ion-button round block class="large-button" [disabled]="profile.nivel != 0" (tap)="iniciar()">Nivelamento</button>
