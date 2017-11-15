@@ -10,7 +10,7 @@ export class QuestionService {
 
     selecionarPergunta(nivel: number, perguntasRespondidas: number): Question {
         if(nivel == 0) {
-            return QUESTIONS[(perguntasRespondidas/2) * 12 + (perguntasRespondidas % 2 == 0 ? 1 : 0)];
+            return QUESTIONS[Math.floor(perguntasRespondidas/2) * 12 + (perguntasRespondidas % 2)];
         }
         else {
             return QUESTIONS[(nivel - 1) * 12 + (2 + perguntasRespondidas)];

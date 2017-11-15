@@ -2,9 +2,6 @@ page-pergunta {
     .title-ios {
         padding: 0 15vw;
     }
-    .questao {
-        margin-top: 7vw;
-    }
     pergunta, opcao {
         display: block;
     }
@@ -16,5 +13,15 @@ page-pergunta {
     }
     div, button {
         transition: 0.8s;
+    }
+    ion-img {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+        contain: content;
+        img {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }

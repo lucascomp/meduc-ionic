@@ -8,6 +8,7 @@
 
 <ion-content padding>
     <div *ngIf="questao" class="questao">
+        <ion-img src="assets/imgs/questao{{questao.id}}.png" alt="Imagem da questão {{questao.id}}"></ion-img>
         <pergunta [pergunta]="questao"></pergunta>
         <opcao *ngFor="let opcao of questao.options" [opcao]="opcao" [respondido]="respondido" [opcaoSelecionada]="opcaoSelecionada" (selected)="newOption($event)" [class.selected]="opcao.id == opcaoSelecionada"></opcao>
     </div>

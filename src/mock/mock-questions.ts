@@ -2,10 +2,11 @@ import { Question, Option } from '../model/question.model';
 
 export const QUESTIONS: Question[] = [
 
-    new Question(1, 1, 'Claudia queixa-se de que há oito meses tem tido diminuição acentuada do desejo sexual, não apresenta pensamentos eróticos, não sente prazer nas relações sexuais, com redução das sensações genitais durante a atividade sexual e nenhuma iniciativa de atividade sexual, o que tem gerado grande sofrimento e transtornos em seu casamento e decepção por ser mulher e apresentar esta dificuldade. Qual é o diagnóstico?', [
-        new Option(1, 'Transtorno da penetração', false),
-        new Option(2, 'Disforia de gênero', false),
-        new Option(3, 'Transtorno do interesse/excitação sexual feminino', true)
+    
+    new Question(1, 1, 'A alteração de ausculta cardíaca mais comum na cardite reumática aguda relaciona-se à presença de:', [
+        new Option(1, 'Estenose aórtica', false),
+        new Option(2, 'Estenose mitral', false),
+        new Option(3, 'Insuficiência mitral', true)
     ]),
     new Question(2, 1, 'A capacidade civil é a “medida jurídica da personalidade”, e a incapacidade “a restrição legal ou judicial ao exercício da vida civil”. Conforme dispõe o Código Civil de 2002, com as alterações realizadas pela Lei n. 13.146, de 6 de julho de 2015, são considerados absolutamente incapazes de exercer pessoalmente os atos da vida civil:', [
         new Option(1, 'Menores de 16 anos.', true),
@@ -122,10 +123,10 @@ export const QUESTIONS: Question[] = [
         new Option(2, 'Dor induzida pela administração endovenosa de betabloqueador', false),
         new Option(3, 'Elevação do segmento ST induzida por frio, em repouso, com ou sem dor', false)
     ]),
-    new Question(25, 3, 'A alteração de ausculta cardíaca mais comum na cardite reumática aguda relaciona-se à presença de:', [
-        new Option(1, 'Estenose aórtica', false),
-        new Option(2, 'Estenose mitral', false),
-        new Option(3, 'Insuficiência mitral', true)
+    new Question(25, 3, 'Claudia queixa-se de que há oito meses tem tido diminuição acentuada do desejo sexual, não apresenta pensamentos eróticos, não sente prazer nas relações sexuais, com redução das sensações genitais durante a atividade sexual e nenhuma iniciativa de atividade sexual, o que tem gerado grande sofrimento e transtornos em seu casamento e decepção por ser mulher e apresentar esta dificuldade. Qual é o diagnóstico?', [
+        new Option(1, 'Transtorno da penetração', false),
+        new Option(2, 'Disforia de gênero', false),
+        new Option(3, 'Transtorno do interesse/excitação sexual feminino', true)
     ]),
     new Question(26, 3, 'No tratamento da diarreia associada à infecção por Clostridium difficile os antibióticos indicados e a duração do tratamento são, respectivamente:', [
         new Option(1, 'Metronidazol ou vancomicina por 14 dias', true),
