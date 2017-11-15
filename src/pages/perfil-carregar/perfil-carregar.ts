@@ -73,6 +73,7 @@ export class PerfilCarregarPage {
                     position: 'top'
                   });
                   toast.present();
+                  this.idSelected = null;
                   if(this.profiles.length == 0) {
                     this.navCtrl.pop();
                   }
