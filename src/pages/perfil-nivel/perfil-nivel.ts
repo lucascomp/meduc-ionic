@@ -57,59 +57,38 @@ export class PerfilNivelPage {
                     this.finalizarNivel(this.profile.nivel + 1, false);
                     }
                 }
-                else if(this.profile.respostasCertas > 4) {
-                    this.finalizarNivel(this.profile.nivel, false);
-                }
                 else {
-                    this.finalizarNivel((this.profile.nivel - 1) != 0 ? (this.profile.nivel - 1) : 1, false);
+                    this.finalizarNivel(this.profile.nivel, false);
                 }
             }
         }
     }
 
     finalizarNivel(nivel: number, nivelamento: boolean): void {
+        let title;
+        let message ;
         if(nivelamento) {
-            this.exibirAlerta('Resultado', `Você alcançou o nível ${nivel}!`, [
-                {
-                    text: 'Ok',
-                    handler: () => {
-                        this.estabelecerNovoNivel(nivel);
-                    }
-                }
-            ]);
+            title = 'Resultado';
+            message = `Você alcançou o nível ${nivel}!`;
         }
         else {
-            if(this.profile.nivel > nivel) {
-                this.exibirAlerta('=(', 'Que pena, você caiu de nível.', [
-                {
-                    text: 'Ok',
-                    handler: () => {
-                        this.estabelecerNovoNivel(nivel);
-                    }
-                }
-            ]);
-            }
-            else if(this.profile.nivel < nivel) {
-                this.exibirAlerta('=)', 'Parabéns, você subiu de nível!', [
-                    {
-                        text: 'Ok',
-                        handler: () => {
-                            this.estabelecerNovoNivel(nivel);
-                        }
-                    }
-                ]);
+            if(this.profile.nivel < nivel) {
+                title = '=)';
+                message = `Parabéns, você subiu de nível!`;
             }
             else {
-                this.exibirAlerta('=(', 'Você não finalizou o nível. Será necessário fazer um reforço.', [
-                    {
-                        text: 'Ok',
-                        handler: () => {
-                            this.estabelecerNovoNivel(nivel);
-                        }
-                    }
-                ]);
+                title = '=(';
+                message = `Você não finalizou o nível. Será necessário fazer um reforço.`;
             }
         }
+        this.exibirAlerta(title, message, [
+            {
+                text: 'Ok',
+                handler: () => {
+                    this.estabelecerNovoNivel(nivel);
+                }
+            }
+        ]);
     }
 
     estabelecerNovoNivel(novoNivel: number): void {
