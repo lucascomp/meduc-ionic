@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-                {{(profile.nivel > 0 ? ('Nível ' + profile.nivel) : 'Nivelamento') + ' - Questão 0' + (profile.perguntasRespondidas + 1)}}
+                {{(profile.nivel > 0 ? ('Nível ' + profile.nivel) : 'Nivelamento') + ' - Questão '  + (profile.perguntasRespondidas < 10 ? '0' : '') + (profile.perguntasRespondidas + (respondido ? 0 : 1))}}
         </ion-title>
     </ion-navbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content padding>
     <div *ngIf="questao" class="questao">
         <pergunta [pergunta]="questao"></pergunta>
-        <opcao *ngFor="let opcao of questao.options" [opcao]="opcao" (selected)="newOption($event)" [class.selected]="opcao.id == opcaoSelecionada"></opcao>
+        <opcao *ngFor="let opcao of questao.options" [opcao]="opcao" [respondido]="respondido" [opcaoSelecionada]="opcaoSelecionada" (selected)="newOption($event)" [class.selected]="opcao.id == opcaoSelecionada"></opcao>
     </div>
-    <button class="large-button" [disabled]="!opcaoSelecionada || contador == 0" ion-button round block (tap)="confirmar()">Confirmar</button>
+    <button class="large-button" [disabled]="!opcaoSelecionada || contador == 0" ion-button round block (tap)="confirmar()">{{ respondido ? "Continuar" : "Confirmar" }}</button>
 </ion-content>

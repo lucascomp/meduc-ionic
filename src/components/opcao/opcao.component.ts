@@ -9,12 +9,22 @@ import { Option } from '../../model/question.model';
 export class OpcaoComponent {
 
     @Input() opcao: Option;
+    @Input() respondido: boolean;
+    @Input() opcaoSelecionada: number;
     @Output() selected = new EventEmitter<any>();
 
-    constructor() { }
+    selecionar(): void {
+        if(!this.respondido) {
+            this.selected.emit(this.opcao.id);
+        }
+    }
 
-    selecionar() {
-        this.selected.emit(this.opcao.id);
+    exibirRespostaCerta(): boolean {
+        return this.respondido && this.opcao.value;
+    }
+
+    exibirRespostaErrada(): boolean {
+        return this.respondido && (this.opcao.id == this.opcaoSelecionada);
     }
 
 }

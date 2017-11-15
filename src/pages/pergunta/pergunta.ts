@@ -20,6 +20,7 @@ export class PerguntaPage {
     profile: Profile;
     questao: Question;
     opcaoSelecionada: number;
+    respondido: boolean;
 
     constructor(
         private navCtrl: NavController,
@@ -40,12 +41,20 @@ export class PerguntaPage {
     }
 
     confirmar(): void {
-        const respostaCerta = this.questao.options.find(opcao => {
+        if(this.respondido) {
+            this.voltarMenu(this.profile);
+        }
+        else {
+            const respostaCerta = this.respostaCerta();
+            this.exibirResultado(respostaCerta);
+        }
+    }
+
+    respostaCerta(): boolean {
+        return this.questao.options.find(opcao => {
             if(opcao.id == this.opcaoSelecionada) return true;
             else return false;
         }).value;
-
-        this.exibirResultado(respostaCerta);
     }
 
     exibirResultado(respostaCerta) {
@@ -62,16 +71,10 @@ export class PerguntaPage {
                         }
                     },
                     {
-                        text: 'Continuar',
+                        text: 'Ok',
                         handler: () => {
-                            if(profile.perguntasRespondidas < 10) {
-                                this.navCtrl.setRoot(PerguntaPage, {
-                                    profile: profile
-                                });
-                            }
-                            else {
-                                this.voltarMenu(profile);
-                            }
+                            this.profile = profile;
+                            this.respondido = true;
                         }
                     }
                 ]
@@ -83,22 +86,29 @@ export class PerguntaPage {
     }
 
     voltarMenu(profile) {
-        let params = {
-            profile: profile
+        if(profile.perguntasRespondidas < 10) {
+            this.navCtrl.setRoot(PerguntaPage, {
+                profile: profile
+            });
         }
-        this.navCtrl.setPages([
-            {
-                page: HomePage
-            },
-            {
-                page: PerfilMenuPage,
-                params: params
-            },
-            {
-                page: PerfilNivelPage,
-                params: params
+        else {
+            let params = {
+                profile: profile
             }
-        ]);
+            this.navCtrl.setPages([
+                {
+                    page: HomePage
+                },
+                {
+                    page: PerfilMenuPage,
+                    params: params
+                },
+                {
+                    page: PerfilNivelPage,
+                    params: params
+                }
+            ]);
+        }
     }
 
     salvarResposta(respostaCerta: boolean): Promise<Profile> {

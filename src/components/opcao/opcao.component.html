@@ -1,4 +1,4 @@
-<ion-card (tap)="selecionar()">
+<ion-card (tap)="selecionar()" [class.wrong]="exibirRespostaErrada()" [class.correct]="exibirRespostaCerta()">
     <span class="letra">
         <p>
             {{opcao.id == 1 ? 'A' : (opcao.id == 2 ? 'B' : 'C')}}

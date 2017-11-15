@@ -10,16 +10,16 @@
     <div id="respostas">
         <h3>Respostas: {{profile.respostasCertas}}/{{profile.perguntasRespondidas}}</h3>
         <div>
-            <button class="resposta" [class.certa]="profile.certa(0)" [class.errada]="profile.errada(0)" ion-button>1</button>
-            <button class="resposta" [class.certa]="profile.certa(1)" [class.errada]="profile.errada(1)" ion-button>2</button>
-            <button class="resposta" [class.certa]="profile.certa(2)" [class.errada]="profile.errada(2)" ion-button>3</button>
-            <button class="resposta" [class.certa]="profile.certa(3)" [class.errada]="profile.errada(3)" ion-button>4</button>
-            <button class="resposta" [class.certa]="profile.certa(4)" [class.errada]="profile.errada(4)" ion-button>5</button>
-            <button class="resposta" [class.certa]="profile.certa(5)" [class.errada]="profile.errada(5)" ion-button>6</button>
-            <button class="resposta" [class.certa]="profile.certa(6)" [class.errada]="profile.errada(6)" ion-button>7</button>
-            <button class="resposta" [class.certa]="profile.certa(7)" [class.errada]="profile.errada(7)" ion-button>8</button>
-            <button class="resposta" [class.certa]="profile.certa(8)" [class.errada]="profile.errada(8)" ion-button>9</button>
-            <button class="resposta" [class.certa]="profile.certa(9)" [class.errada]="profile.errada(9)" ion-button>10</button>
+            <button class="resposta" [class.certa]="profile.certa(0)" [class.errada]="profile.errada(0)" [disabled]="profile.perguntasRespondidas < 1" ion-button>1</button>
+            <button class="resposta" [class.certa]="profile.certa(1)" [class.errada]="profile.errada(1)" [disabled]="profile.perguntasRespondidas < 2" ion-button>2</button>
+            <button class="resposta" [class.certa]="profile.certa(2)" [class.errada]="profile.errada(2)" [disabled]="profile.perguntasRespondidas < 3" ion-button>3</button>
+            <button class="resposta" [class.certa]="profile.certa(3)" [class.errada]="profile.errada(3)" [disabled]="profile.perguntasRespondidas < 4" ion-button>4</button>
+            <button class="resposta" [class.certa]="profile.certa(4)" [class.errada]="profile.errada(4)" [disabled]="profile.perguntasRespondidas < 5" ion-button>5</button>
+            <button class="resposta" [class.certa]="profile.certa(5)" [class.errada]="profile.errada(5)" [disabled]="profile.perguntasRespondidas < 6" ion-button>6</button>
+            <button class="resposta" [class.certa]="profile.certa(6)" [class.errada]="profile.errada(6)" [disabled]="profile.perguntasRespondidas < 7" ion-button>7</button>
+            <button class="resposta" [class.certa]="profile.certa(7)" [class.errada]="profile.errada(7)" [disabled]="profile.perguntasRespondidas < 8" ion-button>8</button>
+            <button class="resposta" [class.certa]="profile.certa(8)" [class.errada]="profile.errada(8)" [disabled]="profile.perguntasRespondidas < 9" ion-button>9</button>
+            <button class="resposta" [class.certa]="profile.certa(9)" [class.errada]="profile.errada(9)" [disabled]="profile.perguntasRespondidas < 10" ion-button>10</button>
         </div>
     </div>
     <div id="iniciar">

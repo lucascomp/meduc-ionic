@@ -24,4 +24,10 @@ opcao {
             line-height: 1.3;
         }
     }
+    .wrong {
+        border: 2px solid red;
+    }
+    .correct {
+        border: 2px solid green;
+    }
 }
