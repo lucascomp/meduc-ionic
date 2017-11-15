@@ -18,8 +18,6 @@ import { Question } from '../../model/question.model';
 export class PerguntaPage {
 
     profile: Profile;
-    contador: number = 60;
-    contagemInterval: number;
     questao: Question;
     opcaoSelecionada: number;
 
@@ -34,11 +32,6 @@ export class PerguntaPage {
     }
 
     ionViewDidEnter(): void {
-        this.contagemInterval = setInterval(() => {
-            if(--this.contador == 0) {
-                this.exibirResultado(false);
-            }
-        }, 1000);
         this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas);
     }
 
@@ -60,7 +53,7 @@ export class PerguntaPage {
         .then(profile => {
             let alert = this.alertCtrl.create({
                 title: respostaCerta ? '=D' : '=(',
-                message: respostaCerta ? 'Parabéns, você acertou!' : 'Sinto muito, ' + ( !this.contador ? 'o tempo acabou.' : 'você errou.'),
+                message: respostaCerta ? 'Parabéns, você acertou!' : 'Sinto muito, você errou.',
                 buttons: [
                     {
                         text: 'Voltar',
@@ -87,7 +80,6 @@ export class PerguntaPage {
                 alert.present();
             }, 600);
         });
-        clearInterval(this.contagemInterval);
     }
 
     voltarMenu(profile) {
