@@ -46,10 +46,10 @@ export class PerfilNivelPage {
             else {
                 if(this.profile.respostasCertas > 6) {
                     if(this.profile.nivel == 5) {
-                        this.exibirAlerta('PARABÉNS!', 'VOCÊ FINALIZOU O JOGO!', [
+                        this.exibirAlerta('Parabéns!', 'Você finalizou o jogo!', [
                             {
                                 text: 'Ok',
-                                handler: () => { }
+                                handler: () => {}
                             }
                         ]);
                     }
@@ -88,14 +88,14 @@ export class PerfilNivelPage {
         this.exibirAlerta(title, message, [
             {
                 text: 'Ok',
-                handler: () => {
-                    this.estabelecerNovoNivel(nivel);
-                }
+                handler: () => {}
             }
         ]);
+        this.estabelecerNovoNivel(nivel);
     }
 
     estabelecerNovoNivel(novoNivel: number): void {
+        console.log(this.profile.nivel, novoNivel);
         this.profileService.estabelecerNivel(this.profile.id, novoNivel)
         .then(newProfile => {
             this.profile = newProfile;

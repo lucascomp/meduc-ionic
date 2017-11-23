@@ -7,16 +7,27 @@
 </ion-header>
 
 <ion-content padding>
-    <div id="niveis">
-        <h3>Seu consultório:</h3>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 1" [class.highlighted]="profile.nivel == 1" [class.background1]="profile.nivel == 1" (tap)="consultorio()">1</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 2" [class.highlighted]="profile.nivel == 2" [class.background2]="profile.nivel == 2" (tap)="consultorio()">2</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 3" [class.highlighted]="profile.nivel == 3" [class.background3]="profile.nivel == 3" (tap)="consultorio()">3</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 4" [class.highlighted]="profile.nivel == 4" [class.background4]="profile.nivel == 4" (tap)="consultorio()">4</button>
-        <button class="nivel" ion-button round [disabled]="profile.nivel != 5" [class.highlighted]="profile.nivel == 5" [class.background5]="profile.nivel == 5" (tap)="consultorio()">5</button>
+    <div *ngIf="nivel() != 6" id="niveis">
+        <h3>Nível:</h3>
+        <button class="nivel" ion-button round [disabled]="nivel() != 1" [class.highlighted]="nivel() == 1">1</button>
+        <button class="nivel" ion-button round [disabled]="nivel() != 2" [class.highlighted]="nivel() == 2">2</button>
+        <button class="nivel" ion-button round [disabled]="nivel() != 3" [class.highlighted]="nivel() == 3">3</button>
+        <button class="nivel" ion-button round [disabled]="nivel() != 4" [class.highlighted]="nivel() == 4">4</button>
+        <button class="nivel" ion-button round [disabled]="nivel() != 5" [class.highlighted]="nivel() >= 5">5</button>
+    </div>
+    <div id="consultorio">
+        <h3 *ngIf="nivel() != 6">Consultório:</h3>
+        <h3 *ngIf="nivel() == 6">Seu consultório está completo!</h3>
+        <ion-img *ngIf="nivel() == 0" src="assets/imgs/consultorio0.png" alt="Imagem do consultório nivel 0"></ion-img>
+        <ion-img *ngIf="nivel() == 1" src="assets/imgs/consultorio1.png" alt="Imagem do consultório nível 1"></ion-img>
+        <ion-img *ngIf="nivel() == 2" src="assets/imgs/consultorio2.png" alt="Imagem do consultório nível 2"></ion-img>
+        <ion-img *ngIf="nivel() == 3" src="assets/imgs/consultorio3.png" alt="Imagem do consultório nível 3"></ion-img>
+        <ion-img *ngIf="nivel() == 4" src="assets/imgs/consultorio4.png" alt="Imagem do consultório nível 4"></ion-img>
+        <ion-img *ngIf="nivel() == 5" src="assets/imgs/consultorio5.png" alt="Imagem do consultório nível 5"></ion-img>
+        <ion-img *ngIf="nivel() == 6" src="assets/imgs/consultorio6.png" alt="Imagem do consultório nível 6"></ion-img>
     </div>
     <div id="iniciar">
-        <button ion-button round block class="large-button" [disabled]="profile.nivel != 0" (tap)="iniciar()">Nivelamento</button>
-        <button ion-button block class="large-button" [disabled]="profile.nivel == 0 || (profile.nivel == 5 && profile.perguntasRespondidas == 10 && profile.respostasCertas > 6)" (tap)="iniciar()">Iniciar</button>
+        <button *ngIf="nivel() == 0" ion-button round block class="large-button" (tap)="iniciar()">Nivelamento</button>
+        <button *ngIf="nivel() != 0" ion-button block class="large-button" [disabled]="nivel() == 6" (tap)="iniciar()">Iniciar</button>
     </div>
 </ion-content>

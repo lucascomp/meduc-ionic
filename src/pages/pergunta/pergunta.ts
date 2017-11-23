@@ -132,7 +132,7 @@ export class PerguntaPage {
             return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.visualizar.questao < 10 ? '0' : '') + this.visualizar.questao;
         }
         else {
-            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.profile.perguntasRespondidas < 9 ? '0' : '') + (this.profile.perguntasRespondidas + (this.respondido ? 0 : 1));
+            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.profile.perguntasRespondidas < 9 || (this.profile.perguntasRespondidas == 9 && this.respondido) ? '0' : '') + (this.profile.perguntasRespondidas + (this.respondido ? 0 : 1));
         }
     }
 

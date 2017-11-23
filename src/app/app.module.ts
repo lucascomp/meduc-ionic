@@ -12,7 +12,6 @@ import { PerfilCriarPage } from '../pages/perfil-criar/perfil.criar';
 import { PerfilMenuPage } from '../pages/perfil-menu/perfil-menu';
 import { PerfilNivelPage } from '../pages/perfil-nivel/perfil-nivel';
 import { PerguntaPage } from '../pages/pergunta/pergunta';
-import { ConsultorioPage } from '../pages/consultorio/consultorio';
 
 import { ProfileComponent } from '../components/profile/profile.component';
 import { PerguntaComponent } from '../components/pergunta/pergunta.component';
@@ -30,7 +29,6 @@ import { ProfileService } from '../providers/profile/profile.service';
     PerfilMenuPage,
     PerfilNivelPage,
     PerguntaPage,
-    ConsultorioPage,
     ProfileComponent,
     PerguntaComponent,
     OpcaoComponent
@@ -48,8 +46,7 @@ import { ProfileService } from '../providers/profile/profile.service';
     PerfilCriarPage,
     PerfilMenuPage,
     PerfilNivelPage,
-    PerguntaPage,
-    ConsultorioPage
+    PerguntaPage
   ],
   providers: [
     StatusBar,

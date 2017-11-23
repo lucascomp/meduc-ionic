@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { PerfilNivelPage } from '../perfil-nivel/perfil-nivel';
-import { ConsultorioPage } from '../consultorio/consultorio';
 
 import { Profile } from '../../model/profile.model';
 
@@ -21,16 +20,15 @@ export class PerfilMenuPage {
         this.profile = this.navParams.get('profile');
     }
 
-    iniciar() {
+    iniciar(): void {
         this.navCtrl.push(PerfilNivelPage, {
             profile: this.profile
         });
     }
 
-    consultorio() {
-        this.navCtrl.push(ConsultorioPage, {
-            nivel: this.profile.nivel
-        });
+    nivel(): number {
+        if(this.profile.nivel == 5 && this.profile.perguntasRespondidas == 10 && this.profile.respostasCertas > 6) return 6;
+        return this.profile.nivel;
     }
 
 }

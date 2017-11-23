@@ -4,33 +4,24 @@ page-perfil-menu {
         background: linear-gradient(to right, #0071ad, #199fb8);
     }
     .highlighted {
-        color: white;
         box-shadow: 5px 5px 6px #888888;
     }
     #niveis {
         margin-top: 4vh;
-        .background1 {
-            background-size: 50px 35px;
-            background-image: url("../assets/imgs/consultorio1.png");
-        }
-        .background2 {
-            background-size: 50px 35px;
-            background-image: url("../assets/imgs/consultorio2.png");
-        }
-        .background3 {
-            background-size: 50px 35px;
-            background-image: url("../assets/imgs/consultorio3.png");
-        }
-        .background4 {
-            background-size: 50px 35px;
-            background-image: url("../assets/imgs/consultorio4.png");
-        }
-        .background5 {
-            background-size: 50px 35px;
-            background-image: url("../assets/imgs/consultorio5.png");
-        }
+    }
+    #consultorio {
+        margin-top: 4vh;
     }
     #iniciar {
-        margin-top: 20vh;
+        margin-top: 4vh;
+    }
+    ion-img {
+        contain: content;
+        width: 100%;
+        height: 100%;
+        img {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
