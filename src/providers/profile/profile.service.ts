@@ -88,16 +88,25 @@ export class ProfileService {
                     let newProfile;
                     profiles.forEach(profile => {
                         if(profile.id == id) {
-                            if(profile.reforco < 2) {
+                            if(profile.nivel == 0) {
                                 profile.nivel = nivel;
+                            }
+                            else if(profile.nivel == nivel) {
                                 if(profile.nivel != 1) {
-                                    profile.reforco ++;
+                                    if(profile.reforco < 2) {
+                                        profile.reforco++;
+                                    }
+                                    else {
+                                        profile.nivel = nivel - 1;
+                                        profile.reforco = 0;
+                                    }
                                 }
                             }
                             else {
-                                profile.nivel = nivel - 1;
+                                profile.nivel = nivel;
                                 profile.reforco = 0;
                             }
+                            
                             profile.respostas = [];
                             profile.opcoesRespondidas = [];
                             newProfile = profile;

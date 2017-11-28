@@ -39,7 +39,7 @@ export class PerfilNivelPage {
                 else if(!this.profile.respostas[6] || !this.profile.respostas[7]) {
                     this.finalizarNivel(4, true);
                 }
-                else if(!this.profile.respostas[8] || !this.profile.respostas[9]) {
+                else {
                     this.finalizarNivel(5, true);
                 }
             }
