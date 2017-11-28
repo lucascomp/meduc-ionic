@@ -90,7 +90,9 @@ export class ProfileService {
                         if(profile.id == id) {
                             if(profile.reforco < 2) {
                                 profile.nivel = nivel;
-                                profile.reforco ++;
+                                if(profile.nivel != 1) {
+                                    profile.reforco ++;
+                                }
                             }
                             else {
                                 profile.nivel = nivel - 1;

@@ -76,7 +76,7 @@ export class PerfilNivelPage {
                 title = '=)';
                 message = `Parabéns, você subiu de nível!`;
             }
-            else if(this.profile.reforco < 2) {
+            else if(this.profile.reforco < 2 || this.profile.nivel == 1) {
                 title = '=(';
                 message = `Você não finalizou o nível. Será necessário fazer um reforço.`;
             }
@@ -95,7 +95,6 @@ export class PerfilNivelPage {
     }
 
     estabelecerNovoNivel(novoNivel: number): void {
-        console.log(this.profile.nivel, novoNivel);
         this.profileService.estabelecerNivel(this.profile.id, novoNivel)
         .then(newProfile => {
             this.profile = newProfile;
