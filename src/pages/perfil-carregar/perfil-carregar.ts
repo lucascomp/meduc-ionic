@@ -69,8 +69,7 @@ export class PerfilCarregarPage {
                   this.profiles = profiles;
                   const toast = this.toastCtrl.create({
                     message: 'O perfil foi excluído com sucesso!',
-                    duration: 2000,
-                    position: 'top'
+                    duration: 2000
                   });
                   toast.present();
                   this.idSelected = null;

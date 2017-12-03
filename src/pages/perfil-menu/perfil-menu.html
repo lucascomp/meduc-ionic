@@ -8,12 +8,12 @@
 
 <ion-content padding>
     <div *ngIf="nivel() != 6" id="niveis">
-        <h3>Nível:</h3>
-        <button class="nivel" ion-button round [disabled]="nivel() != 1" [class.highlighted]="nivel() == 1">1</button>
-        <button class="nivel" ion-button round [disabled]="nivel() != 2" [class.highlighted]="nivel() == 2">2</button>
-        <button class="nivel" ion-button round [disabled]="nivel() != 3" [class.highlighted]="nivel() == 3">3</button>
-        <button class="nivel" ion-button round [disabled]="nivel() != 4" [class.highlighted]="nivel() == 4">4</button>
-        <button class="nivel" ion-button round [disabled]="nivel() != 5" [class.highlighted]="nivel() >= 5">5</button>
+        <h3>Histórico por nível:</h3>
+        <button class="nivel" (tap)="historico(1)" ion-button round [disabled]="nivel() < 1">1</button>
+        <button class="nivel" (tap)="historico(2)" ion-button round [disabled]="nivel() < 2">2</button>
+        <button class="nivel" (tap)="historico(3)" ion-button round [disabled]="nivel() < 3">3</button>
+        <button class="nivel" (tap)="historico(4)" ion-button round [disabled]="nivel() < 4">4</button>
+        <button class="nivel" (tap)="historico(5)" ion-button round [disabled]="nivel() < 5">5</button>
     </div>
     <div id="consultorio">
         <h3 *ngIf="nivel() != 6">Consultório:</h3>
@@ -28,6 +28,6 @@
     </div>
     <div id="iniciar">
         <button *ngIf="nivel() == 0" ion-button round block class="large-button" (tap)="iniciar()">Nivelamento</button>
-        <button *ngIf="nivel() != 0" ion-button block class="large-button" [disabled]="nivel() == 6" (tap)="iniciar()">Iniciar</button>
+        <button *ngIf="nivel() != 0" ion-button block class="large-button" [disabled]="nivel() == 6" (tap)="iniciar()">Nível {{profile.nivel}}</button>
     </div>
 </ion-content>

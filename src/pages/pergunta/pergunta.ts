@@ -36,12 +36,37 @@ export class PerguntaPage {
 
     ionViewDidEnter(): void {
         if(this.visualizar) {
-            this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.visualizar.questao - 1);
-            this.opcaoSelecionada = this.profile.opcoesRespondidas[this.visualizar.questao - 1];
+            this.questao = this.questionService.selecionarPergunta(this.navParams.get('nivel') || this.profile.nivel, this.visualizar.questao - 1);
+            switch(this.navParams.get('nivel') || this.profile.nivel) {
+                case 0: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv0[this.visualizar.questao - 1];
+                    break;
+                }
+                case 1: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv1[this.visualizar.questao - 1];
+                    break;
+                }
+                case 2: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv2[this.visualizar.questao - 1];
+                    break;
+                }
+                case 3: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv3[this.visualizar.questao - 1];
+                    break;
+                }
+                case 4: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv4[this.visualizar.questao - 1];
+                    break;
+                }
+                case 5: {
+                    this.opcaoSelecionada = this.profile.opcoesRespondidasNv5[this.visualizar.questao - 1];
+                    break;
+                }
+            }
             this.respondido = true;
         }
         else {
-            this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas);
+            this.questao = this.questionService.selecionarPergunta(this.profile.nivel, this.profile.perguntasRespondidas(this.profile.nivel));
         }
     }
 
@@ -60,7 +85,7 @@ export class PerguntaPage {
     }
 
     avancar(): void {
-        if(this.profile.perguntasRespondidas == 10) {
+        if(this.profile.perguntasRespondidas(this.profile.nivel) == 10) {
             this.voltarMenu();
         }
         else {
@@ -129,10 +154,10 @@ export class PerguntaPage {
 
     get titulo(): string {
         if(this.visualizar) {
-            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.visualizar.questao < 10 ? '0' : '') + this.visualizar.questao;
+            return (this.navParams.get('nivel') > 0 ? ('Nível ' + this.navParams.get('nivel')) : 'Nivelamento') + ' - Questão '  + (this.visualizar.questao < 10 ? '0' : '') + this.visualizar.questao;
         }
         else {
-            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.profile.perguntasRespondidas < 9 || (this.profile.perguntasRespondidas == 9 && this.respondido) ? '0' : '') + (this.profile.perguntasRespondidas + (this.respondido ? 0 : 1));
+            return (this.profile.nivel > 0 ? ('Nível ' + this.profile.nivel) : 'Nivelamento') + ' - Questão '  + (this.profile.perguntasRespondidas(this.profile.nivel) < 9 || (this.profile.perguntasRespondidas(this.profile.nivel) == 9 && this.respondido) ? '0' : '') + (this.profile.perguntasRespondidas(this.profile.nivel) + (this.respondido ? 0 : 1));
         }
     }
 

@@ -1,32 +1,32 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-                {{profile.nivel ? ('Nível ' + profile.nivel) : 'Nivelamento'}}
+                {{historico ? 'Histórico - Nível ' + historico : profile.nivel ? ('Nível ' + profile.nivel) : 'Nivelamento'}}
         </ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
     <div id="respostas">
-        <h3>Perguntas respondidas: {{profile.perguntasRespondidas}}</h3>
-        <h3>Respostas corretas: {{profile.respostasCertas}}</h3>
+        <h3>Perguntas respondidas: {{profile.perguntasRespondidas(historico || this.profile.nivel)}}</h3>
+        <h3>Respostas corretas: {{profile.respostasCertas(historico || this.profile.nivel)}}</h3>
         <div class="respostas">
-            <button class="resposta" [class.certa]="profile.certa(0)" [class.errada]="profile.errada(0)" [disabled]="profile.perguntasRespondidas < 1" (tap)="verPergunta(1)" ion-button>1</button>
-            <button class="resposta" [class.certa]="profile.certa(1)" [class.errada]="profile.errada(1)" [disabled]="profile.perguntasRespondidas < 2" (tap)="verPergunta(2)" ion-button>2</button>
-            <button class="resposta" [class.certa]="profile.certa(2)" [class.errada]="profile.errada(2)" [disabled]="profile.perguntasRespondidas < 3" (tap)="verPergunta(3)" ion-button>3</button>
-            <button class="resposta" [class.certa]="profile.certa(3)" [class.errada]="profile.errada(3)" [disabled]="profile.perguntasRespondidas < 4" (tap)="verPergunta(4)" ion-button>4</button>
-            <button class="resposta" [class.certa]="profile.certa(4)" [class.errada]="profile.errada(4)" [disabled]="profile.perguntasRespondidas < 5" (tap)="verPergunta(5)" ion-button>5</button>
-            <button class="resposta" [class.certa]="profile.certa(5)" [class.errada]="profile.errada(5)" [disabled]="profile.perguntasRespondidas < 6" (tap)="verPergunta(6)" ion-button>6</button>
-            <button class="resposta" [class.certa]="profile.certa(6)" [class.errada]="profile.errada(6)" [disabled]="profile.perguntasRespondidas < 7" (tap)="verPergunta(7)" ion-button>7</button>
-            <button class="resposta" [class.certa]="profile.certa(7)" [class.errada]="profile.errada(7)" [disabled]="profile.perguntasRespondidas < 8" (tap)="verPergunta(8)" ion-button>8</button>
-            <button class="resposta" [class.certa]="profile.certa(8)" [class.errada]="profile.errada(8)" [disabled]="profile.perguntasRespondidas < 9" (tap)="verPergunta(9)" ion-button>9</button>
-            <button class="resposta" [class.certa]="profile.certa(9)" [class.errada]="profile.errada(9)" [disabled]="profile.perguntasRespondidas < 10" (tap)="verPergunta(10)" ion-button>10</button>
+            <button class="resposta" [class.certa]="profile.certa(0, historico || this.profile.nivel)" [class.errada]="profile.errada(0, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 1 && !historico" (tap)="verPergunta(1, historico || this.profile.nivel)" ion-button>1</button>
+            <button class="resposta" [class.certa]="profile.certa(1, historico || this.profile.nivel)" [class.errada]="profile.errada(1, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 2 && !historico" (tap)="verPergunta(2, historico || this.profile.nivel)" ion-button>2</button>
+            <button class="resposta" [class.certa]="profile.certa(2, historico || this.profile.nivel)" [class.errada]="profile.errada(2, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 3 && !historico" (tap)="verPergunta(3, historico || this.profile.nivel)" ion-button>3</button>
+            <button class="resposta" [class.certa]="profile.certa(3, historico || this.profile.nivel)" [class.errada]="profile.errada(3, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 4 && !historico" (tap)="verPergunta(4, historico || this.profile.nivel)" ion-button>4</button>
+            <button class="resposta" [class.certa]="profile.certa(4, historico || this.profile.nivel)" [class.errada]="profile.errada(4, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 5 && !historico" (tap)="verPergunta(5, historico || this.profile.nivel)" ion-button>5</button>
+            <button class="resposta" [class.certa]="profile.certa(5, historico || this.profile.nivel)" [class.errada]="profile.errada(5, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 6 && !historico" (tap)="verPergunta(6, historico || this.profile.nivel)" ion-button>6</button>
+            <button class="resposta" [class.certa]="profile.certa(6, historico || this.profile.nivel)" [class.errada]="profile.errada(6, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 7 && !historico" (tap)="verPergunta(7, historico || this.profile.nivel)" ion-button>7</button>
+            <button class="resposta" [class.certa]="profile.certa(7, historico || this.profile.nivel)" [class.errada]="profile.errada(7, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 8 && !historico" (tap)="verPergunta(8, historico || this.profile.nivel)" ion-button>8</button>
+            <button class="resposta" [class.certa]="profile.certa(8, historico || this.profile.nivel)" [class.errada]="profile.errada(8, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 9 && !historico" (tap)="verPergunta(9, historico || this.profile.nivel)" ion-button>9</button>
+            <button class="resposta" [class.certa]="profile.certa(9, historico || this.profile.nivel)" [class.errada]="profile.errada(9, historico || this.profile.nivel)" [disabled]="profile.perguntasRespondidas(this.profile.nivel) < 10 && !historico" (tap)="verPergunta(10, historico || this.profile.nivel)" ion-button>10</button>
         </div>
     </div>
     <div id="iniciar">
         <button ion-button round block class="large-button"
-            [disabled]="profile.nivel == 5 && profile.perguntasRespondidas == 10 && profile.respostasCertas > 6"
-            (tap)="responder()">{{profile.perguntasRespondidas ? 'Continuar respondendo!' : 'Responder questões!'}}
+            *ngIf="!(profile.nivel == 5 && profile.perguntasRespondidas(historico || this.profile.nivel) == 10 && profile.respostasCertas(historico || this.profile.nivel) > 6) && !historico"
+            (tap)="responder()">{{profile.perguntasRespondidas(this.profile.nivel) ? 'Continuar respondendo!' : 'Responder questões!'}}
         </button>
     </div>
 </ion-content>

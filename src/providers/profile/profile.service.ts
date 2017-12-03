@@ -103,12 +103,36 @@ export class ProfileService {
                                 }
                             }
                             else {
-                                profile.nivel = nivel;
+                                profile.nivel++;
                                 profile.reforco = 0;
                             }
-                            
-                            profile.respostas = [];
-                            profile.opcoesRespondidas = [];
+                            switch(nivel) {
+                                case 1: {
+                                    profile.respostasNv1 = [];
+                                    profile.opcoesRespondidasNv1 = [];
+                                    break;
+                                }
+                                case 2: {
+                                    profile.respostasNv2 = [];
+                                    profile.opcoesRespondidasNv2 = [];
+                                    break;
+                                }
+                                case 3: {
+                                    profile.respostasNv3 = [];
+                                    profile.opcoesRespondidasNv3 = [];
+                                    break;
+                                }
+                                case 4: {
+                                    profile.respostasNv4 = [];
+                                    profile.opcoesRespondidasNv4 = [];
+                                    break;
+                                }
+                                case 5: {
+                                    profile.respostasNv5 = [];
+                                    profile.opcoesRespondidasNv5 = [];
+                                    break;
+                                }
+                            }
                             newProfile = profile;
                         }
                     });
@@ -133,8 +157,38 @@ export class ProfileService {
                     let newProfile;
                     profiles.forEach(profile => {
                         if(profile.id == id) {
-                            profile.respostas.push(respostaCerta);
-                            profile.opcoesRespondidas.push(idOpcaoRespondida);
+                            switch(profile.nivel) {
+                                case 0: {
+                                    profile.respostasNv0.push(respostaCerta);
+                                    profile.opcoesRespondidasNv0.push(idOpcaoRespondida);
+                                    break;
+                                }
+                                case 1: {
+                                    profile.respostasNv1.push(respostaCerta);
+                                    profile.opcoesRespondidasNv1.push(idOpcaoRespondida);
+                                    break;
+                                }
+                                case 2: {
+                                    profile.respostasNv2.push(respostaCerta);
+                                    profile.opcoesRespondidasNv2.push(idOpcaoRespondida);
+                                    break;
+                                }
+                                case 3: {
+                                    profile.respostasNv3.push(respostaCerta);
+                                    profile.opcoesRespondidasNv3.push(idOpcaoRespondida);
+                                    break;
+                                }
+                                case 4: {
+                                    profile.respostasNv4.push(respostaCerta);
+                                    profile.opcoesRespondidasNv4.push(idOpcaoRespondida);
+                                    break;
+                                }
+                                case 5: {
+                                    profile.respostasNv5.push(respostaCerta);
+                                    profile.opcoesRespondidasNv5.push(idOpcaoRespondida);
+                                    break;
+                                }
+                            }
                             newProfile = profile;
                         }
                     });

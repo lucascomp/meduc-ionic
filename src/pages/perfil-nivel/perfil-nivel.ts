@@ -25,40 +25,44 @@ export class PerfilNivelPage {
     }
 
     ionViewDidEnter() {
-        if(this.profile.perguntasRespondidas == 10) {
-            if(this.profile.nivel == 0) {
-                if(!this.profile.respostas[0] || !this.profile.respostas[1]) {
-                    this.finalizarNivel(1, true);
-                }
-                else if(!this.profile.respostas[2] || !this.profile.respostas[3]) {
-                    this.finalizarNivel(2, true);
-                }
-                else if(!this.profile.respostas[4] || !this.profile.respostas[5]) {
-                    this.finalizarNivel(3, true);
-                }
-                else if(!this.profile.respostas[6] || !this.profile.respostas[7]) {
-                    this.finalizarNivel(4, true);
-                }
-                else {
-                    this.finalizarNivel(5, true);
-                }
-            }
-            else {
-                if(this.profile.respostasCertas > 6) {
-                    if(this.profile.nivel == 5) {
-                        this.exibirAlerta('Parabéns!', 'Você finalizou o jogo!', [
-                            {
-                                text: 'Ok',
-                                handler: () => {}
-                            }
-                        ]);
+        if(!this.navParams.get('nivel')) {
+            if(this.profile.perguntasRespondidas(this.profile.nivel) == 10) {
+                if(this.profile.nivel == 0) {
+                    if(!this.profile.respostasNv0[0] || !this.profile.respostasNv0[1]) {
+                        this.finalizarNivel(1, true);
+                    }
+                    else if(!this.profile.respostasNv0[2] || !this.profile.respostasNv0[3]) {
+                        this.finalizarNivel(2, true);
+                    }
+                    else if(!this.profile.respostasNv0[4] || !this.profile.respostasNv0[5]) {
+                        this.finalizarNivel(3, true);
+                    }
+                    else if(!this.profile.respostasNv0[6] || !this.profile.respostasNv0[7]) {
+                        this.finalizarNivel(4, true);
                     }
                     else {
-                    this.finalizarNivel(this.profile.nivel + 1, false);
+                        this.finalizarNivel(5, true);
                     }
                 }
                 else {
-                    this.finalizarNivel(this.profile.nivel, false);
+                    if(this.profile.respostasCertas(this.profile.nivel) > 6) {
+                        if(this.profile.nivel == 5) {
+                            this.exibirAlerta('Parabéns!', `Você finalizou o jogo!<br><br>
+                                                            Recompensa:<br>
+                                                            - Plantas e decoração`, [
+                                {
+                                    text: 'Ok',
+                                    handler: () => {}
+                                }
+                            ]);
+                        }
+                        else {
+                        this.finalizarNivel(this.profile.nivel + 1, false);
+                        }
+                    }
+                    else {
+                        this.finalizarNivel(this.profile.nivel, false);
+                    }
                 }
             }
         }
@@ -66,15 +70,26 @@ export class PerfilNivelPage {
 
     finalizarNivel(nivel: number, nivelamento: boolean): void {
         let title;
-        let message ;
+        let message;
         if(nivelamento) {
             title = 'Resultado';
-            message = `Você alcançou o nível ${nivel}!`;
+            message =  `Você alcançou o nível ${nivel}!<br><br>
+                        Recompensa${nivel > 1 ? 's' : ''}:<br>
+                        - Maca<br>
+         ${nivel > 1 ? `- Cadeira para exames<br>
+         ${nivel > 2 ? `- Máquina para exames<br>
+         ${nivel > 3 ? `- Computador para exames<br>
+         ${nivel > 4 ? `- Televisão` : ''}` : ''}` : ''}` : ''}`;
         }
         else {
             if(this.profile.nivel < nivel) {
                 title = '=)';
-                message = `Parabéns, você subiu de nível!`;
+                message =  `Parabéns, você subiu para o nível ${nivel}!<br><br>
+                            Recompensa:<br>
+                            - ${nivel == 2 ? 'Cadeira para exames' : (
+                                nivel == 3 ? 'Máquina para exames' : (
+                                nivel == 4 ? 'Computador para exames' : (
+                                nivel == 5 ? 'Televisão' : '' )))}`;
             }
             else if(this.profile.reforco < 2 || this.profile.nivel == 1) {
                 title = '=(';
@@ -82,7 +97,11 @@ export class PerfilNivelPage {
             }
             else {
                 title = '=(';
-                message = `Você foi rebaixado de nível.`;
+                message =  `Você foi rebaixado para o nível ${this.profile.nivel - 1}.
+                            ${this.profile.nivel == 5 ? `<br><br>Foi retirado:<br>- Televisão` :
+                            `${this.profile.nivel == 4 ? `<br><br>Foi retirado:<br>- Computador para exames` : 
+                            `${this.profile.nivel == 3 ? `<br><br>Foi retirado:<br>- Máquina para exames` : 
+                            `${this.profile.nivel == 2 ? `<br><br>Foi retirado:<br>- Cadeira para exames` : ''}`}`}`}`;
             }
         }
         this.exibirAlerta(title, message, [
@@ -94,8 +113,8 @@ export class PerfilNivelPage {
         this.estabelecerNovoNivel(nivel);
     }
 
-    estabelecerNovoNivel(novoNivel: number): void {
-        this.profileService.estabelecerNivel(this.profile.id, novoNivel)
+    estabelecerNovoNivel(nivel: number): void {
+        this.profileService.estabelecerNivel(this.profile.id, nivel)
         .then(newProfile => {
             this.profile = newProfile;
             this.navParams.data.profile = newProfile;
@@ -112,7 +131,7 @@ export class PerfilNivelPage {
     }
 
     responder() {
-        this.exibirAlerta('Opa!', this.profile.nivel == 0 ? `Deseja ${this.profile.perguntasRespondidas == 0 ? 'iniciar' : 'continuar'} o nivelamento?` : `Deseja ${this.profile.perguntasRespondidas == 0 ? 'iniciar' : 'continuar'} o nível ${this.profile.nivel}`, [
+        this.exibirAlerta('Opa!', this.profile.nivel == 0 ? `Deseja ${this.profile.perguntasRespondidas(this.profile.nivel) == 0 ? 'iniciar' : 'continuar'} o nivelamento?` : `Deseja ${this.profile.perguntasRespondidas(this.profile.nivel) == 0 ? 'iniciar' : 'continuar'} o nível ${this.profile.nivel}`, [
             {
                 text: 'Não',
                 handler: () => { }
@@ -128,13 +147,17 @@ export class PerfilNivelPage {
         ]);
     }
 
-    verPergunta(question: number): void {
+    verPergunta(question: number, nivel: number): void {
         this.navCtrl.push(PerguntaPage, {
             profile: this.profile,
+            nivel: nivel,
             questao: {
                 questao: question,
-
             }
         });
+    }
+
+    get historico() {
+        return this.navParams.get('nivel');
     }
 }

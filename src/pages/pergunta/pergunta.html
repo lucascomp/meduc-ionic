@@ -11,6 +11,11 @@
         <ion-img src="assets/imgs/questao{{questao.id}}.png" alt="Imagem da questão {{questao.id}}"></ion-img>
         <pergunta [pergunta]="questao"></pergunta>
         <opcao *ngFor="let opcao of questao.options" [opcao]="opcao" [respondido]="respondido" [opcaoSelecionada]="opcaoSelecionada" (selected)="newOption($event)" [class.selected]="opcao.id == opcaoSelecionada"></opcao>
+        <p *ngIf="(respondido || visualizar) && !respostaCerta()" class="justificativa">
+            Justificativa: Lorem ipsum nullam taciti sagittis malesuada donec ipsum pharetra primis,
+            ut aptent dictum cubilia eget conubia orci ultrices, augue vestibulum lobortis
+            sem sodales interdum maecenas volutpat. elementum fusce nisl, dui. 
+        </p>
     </div>
     <button *ngIf="respondido && !visualizar" class="large-button" ion-button round block (tap)="voltarMenu()">Voltar</button>
     <button *ngIf="!visualizar" class="large-button" [disabled]="!opcaoSelecionada || contador == 0" ion-button round block (tap)="confirmar()">{{ respondido ? "Continuar" : "Confirmar" }}</button>
