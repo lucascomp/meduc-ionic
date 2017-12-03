@@ -106,7 +106,7 @@ export class ProfileService {
                                 profile.nivel++;
                                 profile.reforco = 0;
                             }
-                            switch(nivel) {
+                            switch(profile.nivel) {
                                 case 1: {
                                     profile.respostasNv1 = [];
                                     profile.opcoesRespondidasNv1 = [];
