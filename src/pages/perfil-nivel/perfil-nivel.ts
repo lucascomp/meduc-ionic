@@ -48,7 +48,7 @@ export class PerfilNivelPage {
                     if(this.profile.respostasCertas(this.profile.nivel) > 6) {
                         if(this.profile.nivel == 5) {
                             this.exibirAlerta('Parabéns!', `Você finalizou o jogo!<br><br>
-                                                            Recompensa:<br>
+                                                            Item adicionado ao consultório:<br>
                                                             - Plantas e decoração`, [
                                 {
                                     text: 'Ok',
@@ -74,7 +74,7 @@ export class PerfilNivelPage {
         if(nivelamento) {
             title = 'Resultado';
             message =  `Você alcançou o nível ${nivel}!<br><br>
-                        Recompensa${nivel > 1 ? 's' : ''}:<br>
+                        Ite${nivel > 1 ? 'ns' : 'm'} adicionado${nivel > 1 ? 's' : ''} ao consultório:<br>
                         - Maca<br>
          ${nivel > 1 ? `- Cadeira para exames<br>
          ${nivel > 2 ? `- Máquina para exames<br>
@@ -85,7 +85,7 @@ export class PerfilNivelPage {
             if(this.profile.nivel < nivel) {
                 title = '=)';
                 message =  `Parabéns, você subiu para o nível ${nivel}!<br><br>
-                            Recompensa:<br>
+                            Item adicionado ao consultório:<br>
                             - ${nivel == 2 ? 'Cadeira para exames' : (
                                 nivel == 3 ? 'Máquina para exames' : (
                                 nivel == 4 ? 'Computador para exames' : (
